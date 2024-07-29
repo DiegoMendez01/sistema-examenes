@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.sistema.examenes.sistema_examenes_backend.services.UserService;
 
 @RestController
 @RequestMapping("api/users")
+@CrossOrigin("*")
 public class UserController
 {
 	@Autowired
@@ -27,7 +29,8 @@ public class UserController
 	@PostMapping("/")
 	public User saveUser(@RequestBody User user) throws Exception
 	{
-		Set<UserRol> roles = new HashSet<>();
+		user.setPerfil("default.png");
+		Set<UserRol> userRoles = new HashSet<>();
 		
 		Rol rol = new Rol();
 		rol.setId(2L);
@@ -37,7 +40,9 @@ public class UserController
 		userRol.setUser(user);
 		userRol.setRol(rol);
 		
-		return userService.saveUser(user, roles);
+		userRoles.add(userRol);
+		
+		return userService.saveUser(user, userRoles);
 	}
 	
 	@GetMapping("/{username}")
