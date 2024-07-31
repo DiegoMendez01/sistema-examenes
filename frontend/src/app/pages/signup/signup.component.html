@@ -9,38 +9,38 @@
           <form (ngSubmit)="formSubmit()">
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Nombre Usuario</mat-label>
-              <input [(ngModel)]="user.username" type="text" name="username" matInput placeholder="Digite su nombre" />
+              <input required [(ngModel)]="user.username" type="text" name="username" matInput placeholder="Digite su nombre" />
               <mat-hint>El nombre de usuario debe ser unico</mat-hint>
             </mat-form-field>
   
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Contraseña</mat-label>
-              <input [(ngModel)]="user.password" type="password" name="password" matInput placeholder="Digite su contraseña" />
+              <input required [(ngModel)]="user.password" type="password" name="password" matInput placeholder="Digite su contraseña" />
             </mat-form-field>
   
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Nombre</mat-label>
-              <input [(ngModel)]="user.name" matInput type="text" name="name" placeholder="Digite su nombre" />
+              <input required [(ngModel)]="user.name" matInput type="text" name="name" placeholder="Digite su nombre" />
             </mat-form-field>
   
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Apellido</mat-label>
-              <input [(ngModel)]="user.lastName" matInput type="text" name="lastName" placeholder="Digite su apellido" />
+              <input required [(ngModel)]="user.lastName" matInput type="text" name="lastName" placeholder="Digite su apellido" />
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>E-mail</mat-label>
-                <input [(ngModel)]="user.email" matInput type="email" name="email" placeholder="Digite su correo electronico" />
+                <input required [(ngModel)]="user.email" matInput type="email" name="email" placeholder="Digite su correo electronico" />
               </mat-form-field>
 
               <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Celular</mat-label>
-                <input [(ngModel)]="user.phone" matInput type="text" name="phone" placeholder="Digite su celular" />
+                <input required [(ngModel)]="user.phone" matInput type="text" name="phone" placeholder="Digite su celular" />
               </mat-form-field>
             
             <div class="container text-center">
                 <button mat-raised-button color="primary">Registrarse</button>
-                <button style="margin-left: 20px;" mat-raised-button color="accent">Limpiar</button>
+                <button type="reset" style="margin-left: 20px;" mat-raised-button color="accent">Limpiar</button>
             </div>
           </form>
           <br><br><br>
