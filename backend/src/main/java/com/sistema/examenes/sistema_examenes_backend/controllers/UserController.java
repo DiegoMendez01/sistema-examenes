@@ -19,7 +19,7 @@ import com.sistema.examenes.sistema_examenes_backend.models.UserRol;
 import com.sistema.examenes.sistema_examenes_backend.services.UserService;
 
 @RestController
-@RequestMapping("api/users")
+@RequestMapping("api/v1/users")
 @CrossOrigin("*")
 public class UserController
 {
