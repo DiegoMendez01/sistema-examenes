@@ -1,7 +1,11 @@
 package com.sistema.examenes.sistema_examenes_backend.models;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,16 +20,14 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class User
+public class User implements UserDetails
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,4 +60,32 @@ public class User
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
 	@JsonIgnore
     private Set<UserRol> userRoles = new HashSet<>();
+
+	@Override
+	public boolean isAccountNonExpired()
+	{
+		return true;
+	}
+	
+	@Override
+	public boolean isAccountNonLocked()
+	{
+		return true;
+	}
+	
+	@Override
+	public boolean isCredentialsNonExpired()
+	{
+		return true;
+	}
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities()
+	{
+		Set<Authority> authorities = new HashSet<>();
+		this.userRoles.forEach(userRol -> {
+			authorities.add(new Authority(userRol.getRol().getName()));
+		});
+		return authorities;
+	}
 }
