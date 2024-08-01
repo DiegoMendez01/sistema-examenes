@@ -1,5 +1,7 @@
 package com.sistema.examenes.sistema_examenes_backend.controllers;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -7,7 +9,9 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sistema.examenes.sistema_examenes_backend.config.JwtUtils;
 import com.sistema.examenes.sistema_examenes_backend.models.JwtRequest;
 import com.sistema.examenes.sistema_examenes_backend.models.JwtResponse;
+import com.sistema.examenes.sistema_examenes_backend.models.User;
 import com.sistema.examenes.sistema_examenes_backend.services.impl.UserDetailsServiceImpl;
 
 @RestController
@@ -26,6 +31,9 @@ public class AuthenticationController
 	
 	@Autowired
 	private UserDetailsServiceImpl userDetailsServiceImpl;
+	
+	@Autowired
+	private UserDetailsService userDetailsService;
 	
 	@Autowired
 	private JwtUtils jwtUtils;
@@ -54,5 +62,11 @@ public class AuthenticationController
 		}catch(BadCredentialsException badCredentialsException) {
 			throw new Exception("Credenciales invalidas: "+badCredentialsException.getMessage());
 		}
+	}
+	
+	@GetMapping("/current-user")
+	public User getCurrentUser(Principal principal)
+	{
+		return (User) this.userDetailsService.loadUserByUsername(principal.getName());
 	}
 }
