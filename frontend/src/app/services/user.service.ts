@@ -11,6 +11,6 @@ export class UserService {
 
   public saveUser(user:any)
   {
-    return this.HttpClient.post(`${baseUrl}/api/users/`, user)
+    return this.HttpClient.post(`${baseUrl}/api/v1/users/`, user)
   }
 }
