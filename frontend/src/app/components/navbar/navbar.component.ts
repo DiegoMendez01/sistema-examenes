@@ -20,10 +20,25 @@ import { LoginService } from '../../services/login.service';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  user: any = null;
+
   constructor(public login : LoginService) {}
 
   ngOnInit(): void {
+    this.login.loginStatusSubject.subscribe(
+      (status: boolean) => {
+        if (status) {
+          this.user = this.login.getUser();
+        } else {
+          this.user = null;
+        }
+      }
+    );
 
+    // Check if user is already logged in when the component initializes
+    if (this.login.isLoggedIn()) {
+      this.user = this.login.getUser();
+    }
   }
 
   public logout()
