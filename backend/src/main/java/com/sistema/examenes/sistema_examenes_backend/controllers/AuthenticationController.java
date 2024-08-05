@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sistema.examenes.sistema_examenes_backend.config.JwtUtils;
+import com.sistema.examenes.sistema_examenes_backend.exceptions.UserNotFoundException;
 import com.sistema.examenes.sistema_examenes_backend.models.JwtRequest;
 import com.sistema.examenes.sistema_examenes_backend.models.JwtResponse;
 import com.sistema.examenes.sistema_examenes_backend.models.User;
@@ -43,8 +44,8 @@ public class AuthenticationController
 	{
 		try {
 			auth(jwtRequest.getUsername(), jwtRequest.getPassword());
-		}catch(Exception e) {
-			e.printStackTrace();
+		}catch(UserNotFoundException exception) {
+			exception.printStackTrace();
 			throw new Exception("Usuario no encontrado");
 		}
 		
