@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
     "password": ''
   }
 
-  constructor(private snack : MatSnackBar, private loginService : LoginService) {}
+  constructor(private snack : MatSnackBar, private loginService : LoginService, private router : Router) {}
 
   ngOnInit(): void {
 
@@ -58,10 +59,10 @@ export class LoginComponent implements OnInit {
 
             if(this.loginService.getUserRole() == "ADMIN"){
               //Dashboard Admin
-              window.location.href = "/admin";
+              this.router.navigate(['admin'])
             }else if(this.loginService.getUserRole() == "NORMAL"){
               //Dashboard user
-              window.location.href = "/user-dashboard"
+              this.router.navigate(['user-dashboard'])
             }else{
               this.loginService.logout();
             }
