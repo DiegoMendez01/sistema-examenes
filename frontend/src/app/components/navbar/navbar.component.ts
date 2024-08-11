@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../../services/login.service';
+import { ProfileComponent } from '../../pages/profile/profile.component';
 
 @Component({
   selector: 'app-navbar',
