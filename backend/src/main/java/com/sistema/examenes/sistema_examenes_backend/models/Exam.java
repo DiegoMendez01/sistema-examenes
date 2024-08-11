@@ -52,7 +52,7 @@ public class Exam
     private Set<Question> questions = new HashSet<>();
 	
 	@Column(name = "state_delete")
-	private String stateDelete;
+	private boolean stateDelete = false;
 	
 	@Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
