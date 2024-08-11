@@ -3,10 +3,10 @@ package com.sistema.examenes.sistema_examenes_backend.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.sistema.examenes.sistema_examenes_backend.models.Rol;
+import com.sistema.examenes.sistema_examenes_backend.models.Category;
 
 @Repository
-public interface RolRepository extends JpaRepository<Rol, Long>
+public interface CategoryRepository extends JpaRepository<Category, Long>
 {
 
 }
