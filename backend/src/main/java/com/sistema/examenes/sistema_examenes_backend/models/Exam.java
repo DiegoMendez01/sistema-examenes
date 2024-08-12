@@ -1,8 +1,7 @@
 package com.sistema.examenes.sistema_examenes_backend.models;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -49,7 +48,7 @@ public class Exam
 	
 	@OneToMany(mappedBy = "exam", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonIgnore
-    private Set<Question> questions = new HashSet<>();
+	private List<Question> questions;
 	
 	@Column(name = "state_delete")
 	private boolean stateDelete = false;
