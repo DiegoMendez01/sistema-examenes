@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { CategoriesService } from '../../../services/categories.service';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +18,8 @@ import Swal from 'sweetalert2';
     CommonModule,
     MatButtonModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    RouterModule
   ],
   templateUrl: './view-categories.component.html',
   styleUrl: './view-categories.component.css'

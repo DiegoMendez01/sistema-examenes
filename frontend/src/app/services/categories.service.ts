@@ -13,4 +13,9 @@ export class CategoriesService {
   {
     return this.httpClient.get(`${baseUrl}/api/v1/categories/`)
   }
+
+  public createCategory(category : any)
+  {
+    return this.httpClient.post(`${baseUrl}/api/v1/categories/`, category)
+  }
 }
