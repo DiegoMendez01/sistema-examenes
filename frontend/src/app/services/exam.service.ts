@@ -19,4 +19,9 @@ export class ExamService {
     return this.httpClient.post(`${baseUrl}/api/v1/exams/`, exam);
   }
 
+  public deleteExam(id : any)
+  {
+    return this.httpClient.delete(`${baseUrl}/api/v1/exams/${id}`)
+  }
+
 }
