@@ -24,4 +24,13 @@ export class ExamService {
     return this.httpClient.delete(`${baseUrl}/api/v1/exams/${id}`)
   }
 
+  public getExamById(id : any)
+  {
+    return this.httpClient.get(`${baseUrl}/api/v1/exams/${id}`);
+  }
+
+  public updateExam(exam : any)
+  {
+    return this.httpClient.put(`${baseUrl}/api/v1/exams/`, exam);
+  }
 }
