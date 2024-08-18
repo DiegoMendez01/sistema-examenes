@@ -11,6 +11,7 @@ import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoriesComponent } from './pages/admin/add-categories/add-categories.component';
 import { ViewExamComponent } from './pages/admin/view-exam/view-exam.component';
+import { AddExamComponent } from './pages/admin/add-exam/add-exam.component';
 
 export const routes: Routes = [
     {
@@ -52,6 +53,10 @@ export const routes: Routes = [
             {
                 path: 'exams',
                 component: ViewExamComponent
+            },
+            {
+                path: 'add-exam',
+                component: AddExamComponent
             }
         ]
     },

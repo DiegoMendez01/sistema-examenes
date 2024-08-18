@@ -3,6 +3,7 @@ import { ExamService } from '../../../services/exam.service';
 import { MatCardModule } from '@angular/material/card'
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,7 +12,8 @@ import Swal from 'sweetalert2';
   imports: [
     MatCardModule,
     CommonModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ],
   templateUrl: './view-exam.component.html',
   styleUrl: './view-exam.component.css'
