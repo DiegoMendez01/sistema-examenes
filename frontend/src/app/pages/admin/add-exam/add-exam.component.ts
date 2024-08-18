@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { CategoriesService } from '../../../services/categories.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-exam',
@@ -43,7 +44,7 @@ export class AddExamComponent implements OnInit {
     }
   }
 
-  constructor(private categoryService : CategoriesService, private examService : ExamService, private snack : MatSnackBar) {}
+  constructor(private categoryService : CategoriesService, private examService : ExamService, private snack : MatSnackBar, private router : Router) {}
 
   ngOnInit(): void {
       this.categoryService.listCategories().subscribe(
@@ -51,7 +52,7 @@ export class AddExamComponent implements OnInit {
           this.categories = data;
         },
         (error) => {
-          Swal.fire("Examen", "Error al cargar las categorias", "error")
+          Swal.fire("Examen", "Error al cargar las categorias", "error");
         }
       )
   }
@@ -65,6 +66,27 @@ export class AddExamComponent implements OnInit {
       })
       return;
     }
+
+    this.examService.createExam(this.exam).subscribe(
+      (data : any) => {
+        Swal.fire("Examen", "Examen creado correctamente", "success");
+        this.exam = {
+          title: '',
+          description : '',
+          maximumPoints : '',
+          numberOfQuestions : '',
+          stateDelete: true,
+          category : {
+            id : ''
+          }
+        };
+
+        this.router.navigate(['/admin/exams'])
+      },
+      (error) => {
+        Swal.fire("Examen", "Error al crear el examen", "error");
+      }
+    )
   }
 
 }

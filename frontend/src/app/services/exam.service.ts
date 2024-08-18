@@ -14,4 +14,9 @@ export class ExamService {
     return this.httpClient.get(`${baseUrl}/api/v1/exams/`);
   }
 
+  public createExam(exam : any)
+  {
+    return this.httpClient.post(`${baseUrl}/api/v1/exams/`, exam);
+  }
+
 }
