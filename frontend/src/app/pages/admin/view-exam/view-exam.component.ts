@@ -49,15 +49,17 @@ export class ViewExamComponent implements OnInit {
       confirmButtonText: 'Eliminar',
       cancelButtonText: 'Cancelar'
     }).then((result) => {
-      this.examService.deleteExam(id).subscribe(
-        (data) => {
-          this.exams = this.exams.filter((exam : any) => exam.id != id)
-          Swal.fire("Examen", "El examen ha sido eliminado correctamente", "success");
-        },
-        (error) => {
-          Swal.fire("Examen", "El examen no ha sido eliminado correctamente", "error");
-        }
-      )
+      if(result.isConfirmed){
+        this.examService.deleteExam(id).subscribe(
+          (data) => {
+            this.exams = this.exams.filter((exam : any) => exam.id != id)
+            Swal.fire("Examen", "El examen ha sido eliminado correctamente", "success");
+          },
+          (error) => {
+            Swal.fire("Examen", "El examen no ha sido eliminado correctamente", "error");
+          }
+        )
+      }
     })
   }
 

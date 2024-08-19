@@ -44,4 +44,30 @@ export class ViewExamQuestionsComponent implements OnInit {
       }
     )
   }
+
+  public deleteQuestion(id : any)
+  {
+    Swal.fire({
+      title: "Eliminar pregunta",
+      text: "¿Estás seguro de eliminar la pregunta?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.isConfirmed){
+        this.questionService.deleteQuestion(id).subscribe(
+          (data) => {
+            this.questions = this.questions.filter((question : any) => question.id != id)
+            Swal.fire("Examen", "La pregunta ha sido eliminado correctamente", "success");
+          },
+          (error) => {
+            Swal.fire("Examen", "La pregunta no ha sido eliminado correctamente", "error");
+          }
+        )
+      }
+    })
+  }
 }
