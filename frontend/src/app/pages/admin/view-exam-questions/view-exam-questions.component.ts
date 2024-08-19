@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionService } from '../../../services/question.service';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MatDividerModule } from '@angular/material/divider'; 
+import { MatDividerModule } from '@angular/material/divider';
+import { RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,7 +16,9 @@ import Swal from 'sweetalert2';
     MatCardModule,
     FormsModule,
     CommonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatButtonModule,
+    RouterModule
   ],
   templateUrl: './view-exam-questions.component.html',
   styleUrl: './view-exam-questions.component.css'

@@ -13,4 +13,9 @@ export class QuestionService {
   {
     return this.httpClient.get(`${baseUrl}/api/v1/questions/exam/admin/${examId}`);
   }
+
+  public saveQuestion(question : any)
+  {
+    return this.httpClient.post(`${baseUrl}/api/v1/questions/`, question);
+  }
 }
