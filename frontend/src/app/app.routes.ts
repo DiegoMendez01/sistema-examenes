@@ -10,6 +10,12 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoriesComponent } from './pages/admin/add-categories/add-categories.component';
+import { ViewExamComponent } from './pages/admin/view-exam/view-exam.component';
+import { AddExamComponent } from './pages/admin/add-exam/add-exam.component';
+import { UpdateExamComponent } from './pages/admin/update-exam/update-exam.component';
+import { ViewExamQuestionsComponent } from './pages/admin/view-exam-questions/view-exam-questions.component';
+import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
+import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 
 export const routes: Routes = [
     {
@@ -47,7 +53,31 @@ export const routes: Routes = [
             {
                 path: 'add-category',
                 component: AddCategoriesComponent
-            }
+            },
+            {
+                path: 'exams',
+                component: ViewExamComponent
+            },
+            {
+                path: 'add-exam',
+                component: AddExamComponent
+            },
+            {
+                path: 'exam/:id',
+                component: UpdateExamComponent
+            },
+            {
+                path: 'view-questions/:id/:title',
+                component: ViewExamQuestionsComponent
+            },
+            {
+                path: 'add-question/:examId/:title',
+                component: AddQuestionComponent
+            },
+            {
+                path: 'question/:id',
+                component: UpdateQuestionComponent
+            },
         ]
     },
     {
