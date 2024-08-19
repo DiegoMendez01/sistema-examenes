@@ -83,7 +83,11 @@ export const routes: Routes = [
     {
         path: 'user',
         component: UserDashboardComponent,
-        pathMatch: 'full',
-        canActivate: [normalGuard]
+        canActivate: [normalGuard],
+        children: [
+            {
+                path: 'catId'
+            }
+        ]
     }
 ];
