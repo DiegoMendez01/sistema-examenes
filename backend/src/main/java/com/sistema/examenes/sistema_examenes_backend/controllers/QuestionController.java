@@ -3,6 +3,7 @@ package com.sistema.examenes.sistema_examenes_backend.controllers;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -70,5 +71,14 @@ public class QuestionController
 	public void deleteQuestion(@PathVariable("questionId") Long questionId)
 	{
 		questionService.deleteQuestion(questionId);
+	}
+	
+	@GetMapping("/exam/admin/{examId}")
+	public ResponseEntity<?> getQuestionsExamByAdmin(@PathVariable("examId") Long examId)
+	{
+		Exam exam = new Exam();
+		exam.setId(examId);
+		Set<Question> questions = questionService.getQuestionsByExam(exam);
+		return ResponseEntity.ok(questions);
 	}
 }
