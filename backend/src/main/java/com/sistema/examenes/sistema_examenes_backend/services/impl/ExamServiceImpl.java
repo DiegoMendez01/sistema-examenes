@@ -1,11 +1,13 @@
 package com.sistema.examenes.sistema_examenes_backend.services.impl;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sistema.examenes.sistema_examenes_backend.models.Category;
 import com.sistema.examenes.sistema_examenes_backend.models.Exam;
 import com.sistema.examenes.sistema_examenes_backend.repositories.ExamRepository;
 import com.sistema.examenes.sistema_examenes_backend.services.ExamService;
@@ -41,5 +43,10 @@ public class ExamServiceImpl implements ExamService
 		Exam exam = new Exam();
 		exam.setId(id);
 		examRepository.delete(exam);
+	}
+
+	@Override
+	public List<Exam> getExamByCategory(Category category) {
+		return this.examRepository.findByCategory(category);
 	}
 }

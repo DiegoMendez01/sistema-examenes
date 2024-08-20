@@ -25,18 +25,29 @@ export class LoadExamComponent implements OnInit {
   constructor(private route : ActivatedRoute, private examService : ExamService) {}
 
   ngOnInit(): void {
-    this.catId = this.route.snapshot.params['catId'];
-    if(this.catId == 0){
-      this.examService.listExams().subscribe(
-        (data : any) => {
-          this.exams = data;
-        },
-        (error) => {
-          Swal.fire("Mensaje", "Error al cargar los examenes", "error")
-        }
-      )
-    }else{
-      console.log("Cargando un examen especifico")
-    }
+    
+    this.route.params.subscribe((params) => {
+      this.catId = params['catId']
+
+      if(this.catId == 0){
+        this.examService.listExams().subscribe(
+          (data : any) => {
+            this.exams = data;
+          },
+          (error) => {
+            Swal.fire("Mensaje", "Error al cargar los examenes", "error")
+          }
+        )
+      }else{
+        this.examService.getExamByCategory(this.catId).subscribe(
+          (data : any) => {
+            this.exams = data;
+          },
+          (error) => {
+            Swal.fire("Mensaje", "Error al cargar el examen", "error")
+          }
+        )
+      }
+    })
   }
 }

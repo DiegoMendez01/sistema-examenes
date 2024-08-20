@@ -1,7 +1,9 @@
 package com.sistema.examenes.sistema_examenes_backend.services;
 
+import java.util.List;
 import java.util.Set;
 
+import com.sistema.examenes.sistema_examenes_backend.models.Category;
 import com.sistema.examenes.sistema_examenes_backend.models.Exam;
 
 public interface ExamService
@@ -15,4 +17,6 @@ public interface ExamService
 	Exam getExamById(Long id);
 	
 	void deleteExam(Long id);
+	
+	List<Exam> getExamByCategory(Category category);
 }

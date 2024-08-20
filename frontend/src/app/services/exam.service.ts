@@ -33,4 +33,9 @@ export class ExamService {
   {
     return this.httpClient.put(`${baseUrl}/api/v1/exams/`, exam);
   }
+
+  public getExamByCategory(categoryId : any)
+  {
+    return this.httpClient.get(`${baseUrl}/api/v1/exams/category/${categoryId}`);
+  }
 }

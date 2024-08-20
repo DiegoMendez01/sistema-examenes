@@ -1,5 +1,7 @@
 package com.sistema.examenes.sistema_examenes_backend.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sistema.examenes.sistema_examenes_backend.models.Category;
 import com.sistema.examenes.sistema_examenes_backend.models.Exam;
 import com.sistema.examenes.sistema_examenes_backend.services.ExamService;
 
@@ -51,5 +54,13 @@ public class ExamController
 	public void deleteExam(@PathVariable("examId") Long examId)
 	{
 		examService.deleteExam(examId);
+	}
+	
+	@GetMapping("/category/{categoryId}")
+	public List<Exam> getExamByCategory(@PathVariable("categoryId") Long categoryId)
+	{
+		Category category = new Category();
+		category.setId(categoryId);
+		return examService.getExamByCategory(category);
 	}
 }
