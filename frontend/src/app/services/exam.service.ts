@@ -38,4 +38,14 @@ export class ExamService {
   {
     return this.httpClient.get(`${baseUrl}/api/v1/exams/category/${categoryId}`);
   }
+
+  public getExamsActive()
+  {
+    return this.httpClient.get(`${baseUrl}/api/v1/exams/active`);
+  }
+
+  public getExamsActiveByCategory(categoryId : any)
+  {
+    return this.httpClient.get(`${baseUrl}/api/v1/exams/category/active/${categoryId}`);
+  }
 }

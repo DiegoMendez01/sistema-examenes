@@ -30,7 +30,7 @@ export class LoadExamComponent implements OnInit {
       this.catId = params['catId']
 
       if(this.catId == 0){
-        this.examService.listExams().subscribe(
+        this.examService.getExamsActive().subscribe(
           (data : any) => {
             this.exams = data;
           },
@@ -39,7 +39,7 @@ export class LoadExamComponent implements OnInit {
           }
         )
       }else{
-        this.examService.getExamByCategory(this.catId).subscribe(
+        this.examService.getExamsActiveByCategory(this.catId).subscribe(
           (data : any) => {
             this.exams = data;
           },

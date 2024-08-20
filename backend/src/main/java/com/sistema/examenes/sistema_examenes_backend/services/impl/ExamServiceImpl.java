@@ -49,4 +49,14 @@ public class ExamServiceImpl implements ExamService
 	public List<Exam> getExamByCategory(Category category) {
 		return this.examRepository.findByCategory(category);
 	}
+
+	@Override
+	public List<Exam> getExamsActive() {
+		return this.examRepository.findByStateDelete(true);
+	}
+
+	@Override
+	public List<Exam> getExamsActiveByCategory(Category category) {
+		return this.examRepository.findByCategoryAndStateDelete(category, true);
+	}
 }

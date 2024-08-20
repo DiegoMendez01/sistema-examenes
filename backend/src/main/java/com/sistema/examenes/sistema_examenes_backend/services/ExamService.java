@@ -19,4 +19,8 @@ public interface ExamService
 	void deleteExam(Long id);
 	
 	List<Exam> getExamByCategory(Category category);
+	
+	List<Exam> getExamsActive();
+	
+	List<Exam> getExamsActiveByCategory(Category category);
 }

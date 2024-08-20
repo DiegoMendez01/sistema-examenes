@@ -63,4 +63,18 @@ public class ExamController
 		category.setId(categoryId);
 		return examService.getExamByCategory(category);
 	}
+	
+	@GetMapping("/active")
+	public List<Exam> getExamsActive()
+	{
+		return examService.getExamsActive();
+	}
+	
+	@GetMapping("/category/active/{categoryId}")
+	public List<Exam> getExamsActiveByCategory(@PathVariable("categoryId") Long categoryId)
+	{
+		Category category = new Category();
+		category.setId(categoryId);
+		return examService.getExamsActiveByCategory(category);
+	}
 }
